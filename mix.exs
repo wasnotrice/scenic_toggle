@@ -13,13 +13,13 @@ defmodule ScenicToggle.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: [
-        main: "Scenic.Toggle.Components",
-        source_ref: "v#{@version}",
-        source_url: @github
+        main: "Scenic.Toggle.Components"
       ],
-      description: description(),
+      description: description,
+      name: "Scenic Toggle",
+      source_ref: "v#{@version}",
+      source_url: @github,
       package: [
-        name: :scenic_toggle,
         contributors: ["Eric Watson"],
         maintainers: ["Eric Watson"],
         licenses: ["Apache 2"],
