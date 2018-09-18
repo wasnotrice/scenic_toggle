@@ -4,6 +4,7 @@ defmodule Scenic.Component.Toggle do
 
   See the [Components](Scenic.Toggle.Components.html#toggle/2) module for usage
   """
+
   use Scenic.Component, has_children: false
 
   alias Scenic.Graph

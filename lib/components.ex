@@ -1,12 +1,12 @@
 defmodule Scenic.Toggle.Components do
+  @moduledoc """
+  A set of helper functions for working with toggle components.
+  """
+
   alias Scenic.Graph
   alias Scenic.Primitive
 
   alias Scenic.Component.Toggle
-
-  @moduledoc """
-  A set of helper functions for working with toggle components.
-  """
 
   @doc """
   Add toggle to a Scenic graph.
@@ -15,7 +15,7 @@ defmodule Scenic.Toggle.Components do
 
   ### Styles
 
-  Toggles honor the following styles. The :light and :dark styles look nice. The other themes...not so much. You can also override the track and thumb colors directly.
+  Toggles honor the following styles. The `:light` and `:dark` styles look nice. The other bundled themes...not so much. You can also [supply your own theme](Scenic.Toggle.Components.html#toggle/3-theme).
 
   * `:hidden` - If `false` the toggle is rendered. If true, it is skipped. The default
     is `false`.
@@ -35,7 +35,7 @@ defmodule Scenic.Toggle.Components do
 
   * `:border` - the color of the border around the toggle
   * `:background` - the color of the track when the toggle is `off`.
-  * `:text` - the color of the thumb. Defaults to `theme.text`.
+  * `:text` - the color of the thumb.
   * `:thumb` - the color of the track when the toggle is `on`.
 
   Optionally, you can supply the following entries:
