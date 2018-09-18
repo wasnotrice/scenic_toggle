@@ -2,10 +2,13 @@
 
 A toggle component for use in Scenic interfaces
 
+![screen recording](assets/scenic_toggle_demo.gif)
+
+See full [documentation on hex](https://hexdocs.pm/scenic_toggle).
+
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `scenic_toggle` to your list of dependencies in `mix.exs`:
+Add `scenic_toggle` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -14,7 +17,3 @@ def deps do
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/scenic_toggle](https://hexdocs.pm/scenic_toggle).
