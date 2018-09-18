@@ -15,7 +15,7 @@ defmodule ScenicToggle.MixProject do
       docs: [
         main: "Scenic.Toggle.Components"
       ],
-      description: description,
+      description: description(),
       name: "Scenic Toggle",
       source_ref: "v#{@version}",
       source_url: @github,

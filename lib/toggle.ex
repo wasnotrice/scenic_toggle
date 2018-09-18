@@ -204,17 +204,14 @@ defmodule Scenic.Component.Toggle do
     {:noreply, state}
   end
 
-  defp update_graph(
-         %{
-           color: color,
-           contained?: contained?,
-           graph: graph,
-           on?: on?,
-           pressed?: pressed?,
-           theme: theme,
-           thumb_translate: thumb_translate
-         } = state
-       ) do
+  defp update_graph(%{
+         color: color,
+         contained?: contained?,
+         graph: graph,
+         on?: on?,
+         pressed?: pressed?,
+         thumb_translate: thumb_translate
+       }) do
     graph =
       case pressed? && contained? do
         true ->
