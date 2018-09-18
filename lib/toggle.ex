@@ -87,7 +87,7 @@ defmodule Scenic.Component.Toggle do
     color = %{
       thumb: %{
         default: theme.text,
-        active: Map.get(theme, :thumb_pressed, @default_thumb_pressed_color)
+        pressed: Map.get(theme, :thumb_pressed, @default_thumb_pressed_color)
       },
       border: theme.border,
       track: %{
@@ -218,7 +218,7 @@ defmodule Scenic.Component.Toggle do
     graph =
       case pressed? && contained? do
         true ->
-          Graph.modify(graph, :thumb, &Primitive.put_style(&1, :fill, color.thumb.active))
+          Graph.modify(graph, :thumb, &Primitive.put_style(&1, :fill, color.thumb.pressed))
 
         false ->
           Graph.modify(graph, :thumb, &Primitive.put_style(&1, :fill, color.thumb.default))
