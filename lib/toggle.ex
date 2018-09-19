@@ -31,13 +31,13 @@ defmodule Scenic.Component.Toggle do
               thumb_translate: nil,
               color: nil
 
-    @type t :: %{
-            graph: term,
+    @type t :: %__MODULE__{
+            graph: Graph.t(),
             contained?: boolean,
-            id: term,
+            id: atom,
             on?: boolean,
             pressed?: boolean,
-            theme: term,
+            theme: map,
             thumb_translate: %{on: {number, number}, off: {number, number}},
             color: %{
               thumb: %{default: term, active: term},
@@ -48,6 +48,7 @@ defmodule Scenic.Component.Toggle do
   end
 
   #  #--------------------------------------------------------
+  @spec info(boolean) :: String.t()
   def info(data) do
     """
     #{IO.ANSI.red()}Toggle data must be: on?
@@ -57,6 +58,7 @@ defmodule Scenic.Component.Toggle do
   end
 
   # --------------------------------------------------------
+  @spec verify(any) :: {:ok, boolean} | :invalid_data
   def verify(on? = data) when is_boolean(on?) do
     {:ok, data}
   end
@@ -64,6 +66,7 @@ defmodule Scenic.Component.Toggle do
   def verify(_), do: :invalid_data
 
   # --------------------------------------------------------
+  @spec init(any, Keyword.t() | map | nil) :: {:ok, State.t()}
   def init(on?, opts) do
     id = opts[:id]
 
@@ -204,6 +207,7 @@ defmodule Scenic.Component.Toggle do
     {:noreply, state}
   end
 
+  @spec update_graph(State.t()) :: Graph.t()
   defp update_graph(%{
          color: color,
          contained?: contained?,

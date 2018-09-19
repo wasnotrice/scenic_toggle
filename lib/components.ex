@@ -52,6 +52,7 @@ defmodule Scenic.Toggle.Components do
       graph
       |> toggle(true, translate: {20, 20}, thumb_radius: 14)
   """
+  @spec toggle(Graph.t() | Primitive.t(), any, Keyword.t() | nil) :: Graph.t()
   def toggle(graph, data, options \\ [])
 
   def toggle(%Graph{} = g, data, options) do
@@ -65,11 +66,13 @@ defmodule Scenic.Toggle.Components do
   # ============================================================================
   # internal utilities
 
+  @spec add_to_graph(Graph.t(), Toggle, any, Keyword.t()) :: Graph.t()
   defp add_to_graph(%Graph{} = g, mod, data, options) do
     mod.verify!(data)
     mod.add_to_graph(g, data, options)
   end
 
+  @spec modify(Primitive.t(), Toggle, any, Keyword.t()) :: Primitive.t()
   defp modify(%Primitive{module: SceneRef} = p, mod, data, options) do
     mod.verify!(data)
     Primitive.put(p, {mod, data}, options)
