@@ -9,8 +9,9 @@ defmodule Scenic.Component.Toggle do
 
   alias Scenic.Graph
   alias Scenic.Primitive
-  alias Scenic.ViewPort
+  alias Scenic.Primitive.Group
   alias Scenic.Primitive.Style.Theme
+  alias Scenic.ViewPort
 
   import Scenic.Primitives
 
@@ -112,7 +113,7 @@ defmodule Scenic.Component.Toggle do
 
     graph =
       Graph.build()
-      |> Primitive.Group.add_to_graph(
+      |> Group.add_to_graph(
         fn graph ->
           graph
           |> rrect({track_width, track_height, track_border_radius},
@@ -225,17 +226,19 @@ defmodule Scenic.Component.Toggle do
           Graph.modify(graph, :thumb, &Primitive.put_style(&1, :fill, color.thumb.default))
       end
 
-    case on? do
-      true ->
-        graph
-        |> Graph.modify(:track, &Primitive.put_style(&1, :fill, color.track.on))
-        |> Graph.modify(:thumb, &Primitive.put_transform(&1, :translate, thumb_translate.on))
+    graph =
+      case on? do
+        true ->
+          graph
+          |> Graph.modify(:track, &Primitive.put_style(&1, :fill, color.track.on))
+          |> Graph.modify(:thumb, &Primitive.put_transform(&1, :translate, thumb_translate.on))
 
-      false ->
-        graph
-        |> Graph.modify(:track, &Primitive.put_style(&1, :fill, color.track.off))
-        |> Graph.modify(:thumb, &Primitive.put_transform(&1, :translate, thumb_translate.off))
-    end
-    |> push_graph()
+        false ->
+          graph
+          |> Graph.modify(:track, &Primitive.put_style(&1, :fill, color.track.off))
+          |> Graph.modify(:thumb, &Primitive.put_transform(&1, :translate, thumb_translate.off))
+      end
+
+    push_graph(graph)
   end
 end
